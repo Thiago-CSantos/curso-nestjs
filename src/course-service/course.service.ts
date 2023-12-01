@@ -9,6 +9,12 @@ export class CourseService {
                   name: 'NestJS',
                   description: 'Curso sobre fundamentos do framework NestJS',
                   tags: ['node.js', 'nestJS', 'Javascript', 'typescript']
+            }, 
+            {
+                  id: 20,
+                  name: 'Next.js',
+                  description: 'Curso sobre fundamentos do framework Next.js',
+                  tags: ['node.js', 'Next.js', 'Javascript', 'typescript']
             }
       ];
 
@@ -17,7 +23,7 @@ export class CourseService {
       }
 
       findOne(id: number) {
-            return this.courses.filter((a) => a.id === id);
+            return this.courses.find(a => a.id === id);
       }
 
       create(createCourseDTO: any) {
