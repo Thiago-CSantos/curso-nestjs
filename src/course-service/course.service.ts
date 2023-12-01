@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Course } from 'src/courses/courses.entity';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class CourseService {
                   name: 'NestJS',
                   description: 'Curso sobre fundamentos do framework NestJS',
                   tags: ['node.js', 'nestJS', 'Javascript', 'typescript']
-            }, 
+            },
             {
                   id: 20,
                   name: 'Next.js',
@@ -23,7 +23,16 @@ export class CourseService {
       }
 
       findOne(id: number) {
-            return this.courses.find(a => a.id === id);
+            const course = this.courses.find(a => a.id === id);
+
+            // return course ? { course } : () => { throw new NotFoundException(`curso não encontrado ${id}`); }
+            //                      ou
+            if(course) {
+                  return {course, menssage: 'Sucesso'};
+            }
+            else{
+                  throw new NotFoundException(`curso não encontrado ${id}`);
+            }
       }
 
       create(createCourseDTO: any) {
