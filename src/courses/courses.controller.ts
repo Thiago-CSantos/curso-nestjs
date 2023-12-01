@@ -1,7 +1,12 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Res } from '@nestjs/common';
+import { CourseService } from 'src/course-service/course.service';
 
 @Controller("/courses")
 export class CoursesController {
+      // injeção de dependecia do service
+      constructor(private readonly courseService: CourseService) {
+      }
+
 
       @Get("")
       findAll(@Res() response) {
@@ -27,7 +32,7 @@ export class CoursesController {
       }
 
       @Delete("deletar/:id")
-      remover(@Param('id') id: String, @Res() response){
+      remover(@Param('id') id: String, @Res() response) {
             return response.status(HttpStatus.NO_CONTENT).send(`Delete curso ID ${id}`)
       }
 
