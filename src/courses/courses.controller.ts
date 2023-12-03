@@ -18,7 +18,7 @@ export class CoursesController {
 
       @Get(":id")
       findOne(@Param('id') id: number) {
-            return this.service.findOne(+id);
+            return this.service.findOne(id);
             //Em TypeScript, o sinal de + antes de uma variável é usado para converter a variável para o tipo number. Isso é 
             //chamado de operador de unário de adição, e quando usado antes de uma variável do tipo string, 
             //tenta converter essa string em um número.
@@ -36,7 +36,7 @@ export class CoursesController {
 
       @Delete("deletar/:id")
       remover(@Param('id') id: number) {
-            this.service.remove(+id);
+            this.service.remove(id);
             return;
       }
 
