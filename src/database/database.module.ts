@@ -7,8 +7,8 @@ export const dataSourceOptions: DataSourceOptions = {
       host: 'localhost', // Use o nome do serviço definido no Docker Compose
       port: 5432,
       username: 'postgres',
-      password: 'docker',
-      database: 'devtraining',
+      password: 'mysecretpassword',
+      database: 'postgres',
       entities: [],
       synchronize: true,
 };
